@@ -1,0 +1,13 @@
+name: face_rec
+channels:
+ - conda-forge
+dependencies:
+ - python=3.7
+ - click>=6.0
+ - dlib>=19.7
+ - numpy
+ - pillow
+ - cmake
+ - pip
+ - pip:
+   -  -e git+https://github.com/ageitgey/face_recognition.git#egg=face_recognition
