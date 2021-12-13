@@ -8,14 +8,7 @@ from signal import signal, SIGINT
 #Config
 scale = 1 # Precision. The more the better. But then it also uses more GPU/CPU
 model = 'hog' # hog makes it run on CPU and cnn makes it run on GPU. cnn is best but i have a 12 year old graphics card -_-
-
-# Asigning varibles
-has_found = False
-has_lost = True
-sadness = 0
-lol = 0
-has_found = False
-has_lost = True
+cooldown = 9 # Sometimes it loses your face a cuple frames. This is a cooldown for that, so it dosent just spam you
 
 # Starting Video Capture
 cap = cv2.VideoCapture(1)
@@ -33,7 +26,7 @@ def mainLoop():
     has_found = False
     has_lost = True
     sadness = 0
-    lol = 0
+    cooldowntimer = 0
     has_found = False
     has_lost = True
 
@@ -51,7 +44,7 @@ def mainLoop():
             playsound(f'sound/sadness/{randrange(1,6)}.wav')
 
         if face_locations:
-            lol = 0
+            cooldowntimer = 0
             if not has_found:
                 print('FOUND YOU!')
                 has_found = True
@@ -59,14 +52,14 @@ def mainLoop():
                 playsound(f'sound/detection/{randrange(1, 5)}.wav')
         elif not face_locations and not has_lost:
             print('Maybe lost you')
-            if lol == 8:
-                lol = 0
+            if cooldowntimer == cooldown:
+                cooldowntimer = 0
                 print('LOST YOU')
                 has_found = False
                 has_lost = True
                 playsound(f'sound/noDetection/{randrange(1, 4)}.wav')
             else:
-                lol += 1
+                cooldowntimer += 1
 
         #cv2.imshow("Frame", img)
 
