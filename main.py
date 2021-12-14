@@ -6,12 +6,12 @@ from random import randrange
 from signal import signal, SIGINT
 
 #Config
-scale = 1 # Precision. The more the better. But then it also uses more GPU/CPU
+scale = 0.5 # Precision. The more the better. But then it also uses more GPU/CPU
 model = 'hog' # hog makes it run on CPU and cnn makes it run on GPU. cnn is best but i have a 12 year old graphics card -_-
-cooldown = 9 # Sometimes it loses your face a cuple frames. This is a cooldown for that, so it dosent just spam you
+cooldown = 8 # Sometimes it loses your face a cuple frames. This is a cooldown for that, so it dosent just spam you
 
 # Starting Video Capture
-cap = cv2.VideoCapture(1)
+cap = cv2.VideoCapture(0)
 
 # Shutdown function
 def shutdown(signal_received, frame):
@@ -70,7 +70,7 @@ if __name__ == '__main__':
 
     # Signaling startup
     print('Hello')
-    playsound(f'sound/startup/{randrange(1,4)}.wav', block=False)
+    playsound(f'sound/startup/{randrange(1,4)}.wav')
 
     # Run the main loop
     mainLoop()
