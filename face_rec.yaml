@@ -9,5 +9,3 @@ dependencies:
  - pillow
  - cmake
  - pip
- - pip:
-   -  -e git+https://github.com/ageitgey/face_recognition.git#egg=face_recognition
