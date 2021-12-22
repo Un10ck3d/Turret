@@ -41,7 +41,7 @@ def mainLoop():
         sadness = randrange(0,500)
         if sadness == 75:
             print('SAD')
-            playsound(f'sound/sadness/{randrange(1,6)}.wav')
+            playsound(f'sound/sadness/{randrange(1,5)}.wav')
 
         if face_locations:
             cooldowntimer = 0
@@ -49,7 +49,8 @@ def mainLoop():
                 print('FOUND YOU!')
                 has_found = True
                 has_lost = False
-                playsound(f'sound/detection/{randrange(1, 5)}.wav')
+                playsound(f'sound/detection/{randrange(1, 9)}.wav')
+            playsound('sound/shoot.wav', block=False)
         elif not face_locations and not has_lost:
             print('Maybe lost you')
             if cooldowntimer == cooldown:
@@ -57,7 +58,7 @@ def mainLoop():
                 print('LOST YOU')
                 has_found = False
                 has_lost = True
-                playsound(f'sound/noDetection/{randrange(1, 4)}.wav')
+                playsound(f'sound/noDetection/{randrange(1, 5)}.wav')
             else:
                 cooldowntimer += 1
 
